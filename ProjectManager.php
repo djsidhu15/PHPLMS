@@ -64,9 +64,9 @@ if(isset($_POST['submitbutton'])){
                 $i=1;
                 while($row = $result->fetch_assoc()){
                     if($row['approved']==1)
-                        $checkboxesdata.=$i." <input type='checkbox' checked='true' name='check[]' value ='".$row['id']."'>".$row["name"]." - ".$row["cname"]."<br>";
+                        $checkboxesdata.=$i."<label> <input type='checkbox' onclick='return false' checked='true' name='check[]' value ='".$row['id']."'>".$row["name"]." - ".$row["cname"]."</label><br>";
                     else
-                    $checkboxesdata.=$i." <input type='checkbox' name='check[]' value ='".$row['id']."'>".$row["name"]." - ".$row["cname"]."<br>";
+                    $checkboxesdata.=$i."<label> <input type='checkbox' name='check[]' value ='".$row['id']."'>".$row["name"]." - ".$row["cname"]."</label><br>";
                     $i++;
                 }
             }

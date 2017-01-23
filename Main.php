@@ -23,7 +23,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
-
+else{
 $sql = "SELECT * from register;";
 $result = $conn->query($sql);
 
@@ -47,8 +47,108 @@ if ($result->num_rows > 0) {
     echo "0 results";
     $conn->close();
 }
-
 }
+
+//Check Trainer
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+else{
+$sql = "SELECT * from trainer;";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        //echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+        if($usernametext==$row["tusername"]){
+            if($passwordtext==$row["tpassword"]){
+                session_start();
+                
+                $_SESSION['username']=$usernametext;
+                $_SESSION['name']=$row["name"];
+                header('Location: Trainer.php');
+                $conn->close();
+                exit;
+            }
+        }
+    }
+} else {
+    echo "0 results";
+    $conn->close();
+}
+}
+
+//Check Training Manager
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+else{
+$sql = "SELECT * from tm;";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        //echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+        if($usernametext==$row["username"]){
+            if($passwordtext==$row["password"]){
+                session_start();
+                
+                $_SESSION['username']=$usernametext;
+                $_SESSION['name']=$row["name"];
+                header('Location: TrainingManager.php');
+                $conn->close();
+                exit;
+            }
+        }
+    }
+} else {
+    echo "0 results";
+    $conn->close();
+}
+}
+
+//Check Project Manager
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+else{
+$sql = "SELECT * from pm;";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        //echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+        if($usernametext==$row["username"]){
+            if($passwordtext==$row["password"]){
+                session_start();
+                
+                $_SESSION['username']=$usernametext;
+                $_SESSION['name']=$row["name"];
+                header('Location: ProjectManager.php');
+                $conn->close();
+                exit;
+            }
+        }
+    }
+} else {
+    echo "0 results";
+    $conn->close();
+}
+}
+
+
+
+
+}//Submitbutton end
 
 
 

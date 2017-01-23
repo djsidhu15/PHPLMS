@@ -5,6 +5,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+var_dump($_POST);
+
+if(isset($_POST['name'])){
+    echo $_POST['name'];
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,8 +17,8 @@
     <title>All courses</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<!--<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>!-->
 </head>
 <body>
 
@@ -64,6 +69,20 @@
     <h1>Footer</h1>
   </div>
 </div> !-->
+  <input type="button" value="click" onclick="a()">
+  <script>
+      function a(){
+          var data = {name : "Sidharth"};
+          $.post("http://localhost/PHPLMS/Test.php",data,function(json) {
+    console.log(json.name);
+    console.log(json.time);
+}, "json");
+          window.location("http://localhost/PHPLMS/Test.php");
+    
+      }
+      
+  </script>
+  <?php      var_dump($_POST); ?>
 
 </body>
 </html>
