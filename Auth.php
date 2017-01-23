@@ -50,5 +50,7 @@ Browse available courses : <a href="Allcourses2.php" > All courses </a>
 
 <h2>My courses:</h2>
 <p><?php echo $appliedcourses ?></p>
+<br>
+<h2><a href="Feedback.php">Submit Feedback</a></h2>
 </body>
 </html>

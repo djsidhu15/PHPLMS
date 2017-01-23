@@ -48,7 +48,7 @@ if(isset($_POST['submitbutton'])){
                     
                     $sql = "insert into course_approve(username,name,cno,cname) values('".
                     $tusername."','".
-                    "$tname"."','".
+                    $tname."','".
                     $row['cno']."','".
                     $row['cname']."');";
             if($conn->query($sql)===TRUE){
